@@ -24,8 +24,6 @@ Now you can execute methods before your rails application start to render anythi
 
 ```ruby
 class ApplicationController < ActionController::Base
-    include BeforeRender
-
     before_render :set_layout
 
     def set_layout
@@ -38,7 +36,6 @@ You can also use in concerns like so:
 ```ruby
 module PrintableController
   extend ActiveSupport::Concern
-  include BeforeRender
 
   included do
     before_render :update_gst_sum, only: [:new, :show, :print_rf]
