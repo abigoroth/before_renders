@@ -1,41 +1,47 @@
-# BeforeRenders
+# before_renders [![Gem Version](https://badge.fury.io/rb/before_renders.svg)](https://badge.fury.io/rb/before_renders)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/before_renders`. To experiment with that code, run `bin/console` for an interactive prompt.
+If Rails before_filter or after_filter doesn't enough, try before_renders. Tested in Rails 5.0.6
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
-Add this line to your application's Gemfile:
+In your Gemfile:
 
 ```ruby
 gem 'before_renders'
 ```
 
-And then execute:
+or system wide:
 
-    $ bundle
+```console
+$ gem install before_renders
+```
 
-Or install it yourself as:
-
-    $ gem install before_renders
 
 ## Usage
 
-TODO: Write usage instructions here
+Now you can execute methods before your rails application start to render anything. Example in application controller like below :
 
-## Development
+```ruby
+class ApplicationController < ActionController::Base
+    include BeforeRender
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+    before_render :set_layout
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    def set_layout
+        # ...
+    end
+end
+```
 
-## Contributing
+You can also use in concerns like so:
+```ruby
+module PrintableController
+  extend ActiveSupport::Concern
+  include BeforeRender
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/before_renders. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+  included do
+    before_render :update_gst_sum, only: [:new, :show, :print_rf]
+  end
+end
+```
