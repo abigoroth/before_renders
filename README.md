@@ -1,6 +1,6 @@
 # before_renders [![Gem Version](https://badge.fury.io/rb/before_renders.svg)](https://badge.fury.io/rb/before_renders)
 
-If Rails before_filter or after_filter doesn't enough, try before_renders. Tested in Rails 5.0.6
+If Rails before_filter or after_filter doesn't enough, try before_renders. Tested in Rails 5.1.4
 
 
 ## Installation
