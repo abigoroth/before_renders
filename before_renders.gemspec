@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Yakob Ubaidi"]
   spec.email         = ["yakob.ubaidi@gmail.com"]
 
-  spec.summary       = %q{if Rails before_filter or after_filter isn't enough use before_render.}
-  spec.description   = %q{to allow method execution before starts rendering}
+  spec.summary       = %q{if Rails before_action or after_action isn't enough use before_render.}
+  spec.description   = %q{to allow method execution before rendering starts}
   spec.homepage      = "https://github.com/abigoroth/before_renders"
   spec.license       = "MIT"
 
